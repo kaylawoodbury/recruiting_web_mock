@@ -1,0 +1,29 @@
+name: Pull Request tests
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    
+    - name: Install Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+    
+    - name: Install NPM packages
+      run: npm install
+        
+    - name: Install Cypress packages
+      run: npm install cypress --save-dev
+        
+    - name: Run tests
+      run: npm run cy-test
