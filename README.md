@@ -5,13 +5,13 @@ I used a boilerplate app (with cypress, axios, material ui template, etc) that I
 
 ## Things Not including
 - oauth, login/out functionality
+- separate views of active vs inactive recruits
 
 ## Things Including
 - dashboard list of active recruitees
 - search on dashboard
-- employee details
-- - image
-- employee interview notes
+- candidate details
+- candidate interview notes
 
 
 ## Available Scripts

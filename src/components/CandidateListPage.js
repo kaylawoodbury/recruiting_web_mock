@@ -8,16 +8,17 @@ import {
   Grid,
   Typography,
 } from "@material-ui/core";
-import { candidateApi } from '../services/mockApi/candidateDetails';
+import { candidateApi } from '../services/_mockApi_/candidateDetails';
 import useMounted from "../hooks/useMounted";
-import ChevronRightIcon from "../mockImages/icons/ChevronRight";
-import PlusIcon from "../mockImages/icons/Plus";
+import ChevronRightIcon from "../icons/ChevronRight";
+import PlusIcon from "../icons/Plus";
 import useSettings from "../hooks/useSettings";
+import CandidateListTable from "./CandidateListTable";
 
 const CandidateList = () => {
   const mounted = useMounted();
   const { settings } = useSettings();
-  const [Candidates, setCandidates] = useState([]);
+  const [candidates, setCandidates] = useState([]);
 
 
   const getCandidates = useCallback(async () => {
@@ -85,7 +86,7 @@ const CandidateList = () => {
             </Grid>
           </Grid>
           <Box sx={{ mt: 3 }}>
-            <p>Add Candidate Table Here</p>
+          <CandidateListTable candidates={candidates} />
           </Box>
         </Container>
       </Box>

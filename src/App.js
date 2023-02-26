@@ -1,7 +1,7 @@
 import { CssBaseline, ThemeProvider } from '@material-ui/core';
 import useSettings from './hooks/useSettings';
 import { createCustomTheme } from './theme';
-import CandidateList from './components/CandidateList';
+import CandidateList from './components/CandidateListPage';
 
 const App = () => {
   const { settings } = useSettings();
