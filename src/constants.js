@@ -23,3 +23,11 @@ export const hired = {
   YES: 'Yes',
   NO: 'No'
 }
+
+export const roll = {
+  DEVELOPER: 'Developer',
+  PRODUCT_MANAGER: 'Product Manager',
+  ENGINEERING_MANAGER: 'Enegineering Manager',
+  DATA_SCIENTIST: "Data Scientist",
+  OTHER: "Other"
+}

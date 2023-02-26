@@ -1,10 +1,12 @@
 import { CssBaseline, ThemeProvider } from '@material-ui/core';
 import useSettings from './hooks/useSettings';
 import { createCustomTheme } from './theme';
-import CandidateList from './components/CandidateListPage';
+import { useRoutes } from "react-router-dom";
+import routes from "./routes";
 
 const App = () => {
   const { settings } = useSettings();
+  const content = useRoutes(routes);
 
   const theme = createCustomTheme({
     direction: settings.direction,
@@ -16,7 +18,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
         <CssBaseline />
-        <CandidateList />
+        {content}
     </ThemeProvider>
   );
 };

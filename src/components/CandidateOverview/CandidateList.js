@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { Helmet } from "react-helmet-async";
+import { Link as RouterLink } from "react-router-dom";
 import {
   Box,
   Breadcrumbs,
@@ -8,12 +9,12 @@ import {
   Grid,
   Typography,
 } from "@material-ui/core";
-import { candidateApi } from '../services/_mockApi_/candidateDetails';
-import useMounted from "../hooks/useMounted";
-import ChevronRightIcon from "../icons/ChevronRight";
-import PlusIcon from "../icons/Plus";
-import useSettings from "../hooks/useSettings";
-import CandidateListTable from "./CandidateListTable";
+import { candidateApi } from '../../services/_mockApi_/candidateDetails';
+import useMounted from "../../hooks/useMounted";
+import ChevronRightIcon from "../../icons/ChevronRight";
+import PlusIcon from "../../icons/Plus";
+import useSettings from "../../hooks/useSettings";
+import CandidateListTable from "./molecules/CandidateListTable";
 
 const CandidateList = () => {
   const mounted = useMounted();
@@ -79,6 +80,9 @@ const CandidateList = () => {
                   startIcon={<PlusIcon fontSize="small" />}
                   sx={{ m: 1 }}
                   variant="contained"
+                  to="/candidate/edit"
+                  data-cy="new-candidate-bttn"
+                  component={RouterLink}
                 >
                   Add New Candidate
                 </Button>

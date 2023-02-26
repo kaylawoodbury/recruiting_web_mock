@@ -20,10 +20,10 @@ import {
   TextField,
   Typography,
 } from "@material-ui/core";
-import ArrowRightIcon from "../icons/ArrowRight";
-import PencilAltIcon from "../icons/PencilAlt";
-import SearchIcon from "../icons/Search";
-import Scrollbar from "./molecules/Scrollbar";
+import ArrowRightIcon from "../../../icons/ArrowRight";
+import PencilAltIcon from "../../../icons/PencilAlt";
+import SearchIcon from "../../../icons/Search";
+import Scrollbar from "../../molecules/Scrollbar";
 
 const tabs = [
   {
