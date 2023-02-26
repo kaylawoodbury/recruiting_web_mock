@@ -1,16 +1,24 @@
-import './App.css';
+import { CssBaseline, ThemeProvider } from '@material-ui/core';
+import useSettings from './hooks/useSettings';
+import { createCustomTheme } from './theme';
+import CandidateList from './components/CandidateList';
 
-function App() {
+const App = () => {
+  const { settings } = useSettings();
+
+  const theme = createCustomTheme({
+    direction: settings.direction,
+    responsiveFontSizes: settings.responsiveFontSizes,
+    roundedCorners: settings.roundedCorners,
+    theme: settings.theme
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <p data-cy='hello'>
-          Hello World
-        </p>
-       
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <CandidateList />
+    </ThemeProvider>
   );
-}
+};
 
 export default App;

@@ -1,14 +1,8 @@
-export const recruitingStage = {
-	CONTACT: "Contact",
-	DIALOGUE: "Dialogue",
-	INTERVIEW: "Interview",
-	OFFER: "Offer",
-  CLOSED: "Closed"
-}
+import { recruitingStage } from "../../constants";
 
-class RecruiteeApi {
-  getRecruitees() {
-    const recruitees = [
+class CandidateApi {
+  getCandidate() {
+    const candidates = [
       {
         id: '1',
         avatar: '/static/mock-images/avatars/avatar-carson_darrin.png',
@@ -66,8 +60,8 @@ class RecruiteeApi {
       },
     ];
 
-    return Promise.resolve(recruitees);
+    return Promise.resolve(candidates);
   }
 }
 
-export const recruiteeApi = new RecruiteeApi();
+export const candidateApi = new CandidateApi();
