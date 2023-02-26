@@ -36,7 +36,7 @@ The folder material_ui holds the template and is not directly used in the soluti
 - I ended up skipping building out automated tests in this case, however, looking back I think my overall flow would have been smoother by still choosing to include them. And would have probably helped me catch a couple of bugs I found after manually playing around with the end result for a bit.
 
 
-## Video of Going Playing with the Result
+## Video of Playing with the Result
 [mock_web.mov.zip](https://github.com/kaylawoodbury/recruiting_web_mock/files/10834893/mock_web.mov.zip)
 
 ### To Run Web App Locally
