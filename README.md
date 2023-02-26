@@ -1,6 +1,18 @@
-# Getting Started with Create React App
+# Notes:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Setup
+I used a boilerplate app (with cypress, axios, material ui, etc) that I had created previously with a friend for time efficiency to focus on the core of the task for the tech test. In a real life scenario, there are several option available for a client starting a new web app, where we can choose to build fully from the ground up or find a template or boilerplate that can get us further quicker. In these cases it's up to both the client and the devs to determine what makes the most sense from a time, financial, design and functionality perspective. 
+
+## Things Not including
+- oauth, login/out functionality
+
+## Things Including
+- dashboard list of active recruitees
+- search on dashboard
+- employee details
+- - image
+- employee interview notes
+
 
 ## Available Scripts
 

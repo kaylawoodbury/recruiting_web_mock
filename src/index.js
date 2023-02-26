@@ -11,11 +11,9 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <Header />
       <Switch>
         <Route exact path="/" component={App} />
       </Switch>
-      <Footer />
     </Router>
   </React.StrictMode>,
   document.getElementById("root")
