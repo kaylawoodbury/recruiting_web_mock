@@ -9,15 +9,19 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import "./index.css";
 import { StyledEngineProvider } from '@mui/material';
+import { Provider as ReduxProvider } from "react-redux";
+import store from "./store/index";
 
 ReactDOM.render(
   <StrictMode>
     <HelmetProvider>
-      <StyledEngineProvider injectFirst>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </StyledEngineProvider>
+      <ReduxProvider store={store}>
+        <StyledEngineProvider injectFirst>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </StyledEngineProvider>
+      </ReduxProvider>
     </HelmetProvider>
   </StrictMode>,
   document.getElementById("root")
