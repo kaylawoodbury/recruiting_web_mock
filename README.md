@@ -5,7 +5,14 @@ I decided used a boilerplate I had previously created with an attached Materials
 
 From there I built out first an overview daskboard that serves as the landing page. Then I focused on creating the form that would serve for both adding a new user and editing existing uers. Then I set up redux to handle local storage and changes since I was not using a live api.
 
-## Things Not including
+## Things Including
+- dashboard list of active recruitees
+- search on dashboard
+- candidate details update
+- delete candidate
+- add candidate
+
+## Things I'd consider adding if I spent more time with this project
 - oauth, login/out functionality
 - different role designations: admin, etc
 - separate views of active vs inactive recruits
@@ -18,13 +25,6 @@ From there I built out first an overview daskboard that serves as the landing pa
 - Add header with ability to change light/dark settings
 - Add candidate details view
 
-## Things Including
-- dashboard list of active recruitees
-- search on dashboard
-- candidate details update
-- delete candidate
-- add candidate
-
 ## Notes
 The folder material_ui holds the template and is not directly used in the solution. All actively used files are under src and public folders.
 
@@ -33,9 +33,15 @@ The folder material_ui holds the template and is not directly used in the soluti
 
 - Due to spending only about 8 active hours on this, I did not do as much prep work as I would normally and I think it showed in both the quality and in my coding experience with it. 
 
+- I ended up skipping building out automated tests in this case, however, looking back I think my overall flow would have been smoother by still choosing to include them. And would have probably helped me catch a couple of bugs I found after manually playing around with the end result for a bit.
+
+
+## Video of Going Playing with the Result
+[mock_web.mov.zip](https://github.com/kaylawoodbury/recruiting_web_mock/files/10834893/mock_web.mov.zip)
+
 ### To Run Web App Locally
 
 `yarn start`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open to view it in the browser.
