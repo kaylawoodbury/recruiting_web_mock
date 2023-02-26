@@ -17,24 +17,24 @@ import { addCandidate, updateCandidate } from "../../../store/candidate-store";
 // with more time would want to find more elegant way to convert/use the enums for the dropdown lists
 const rollOptions = [
   {
-    value: "DEVELOPER",
+    value: "Developer",
     label: "Developer",
   },
   {
     label: "Product Manager",
-    value: "PRODUCT_MANAGER",
+    value: "Developer",
   },
   {
     label: "Enegineering Manager",
-    value: "ENGINEERING_MANAGER",
+    value: "Developer",
   },
   {
     label: "Data Scientist",
-    value: "DATA_SCIENTIST",
+    value: "Developer",
   },
   {
     label: "Other",
-    value: "OTHER",
+    value: "Developer",
   },
 ];
 
@@ -70,24 +70,24 @@ const hiredOptions = [
 
 const recruitingStageOptions = [
   {
-    value: "CONTACT",
+    value: "Contact",
     label: "Contact",
   },
   {
     label: "Dialogue",
-    value: "DIALOGUE",
+    value: "Dialogue",
   },
   {
     label: "Interview",
-    value: "INTERVIEW",
+    value: "Interview",
   },
   {
     label: "Offer",
-    value: "OFFER",
+    value: "Offer",
   },
   {
     label: "Closed",
-    value: "CLOSED",
+    value: "Closed",
   },
 ];
 
@@ -98,9 +98,12 @@ const CandidateEditForm = (props) => {
     type === "edit" ? "Update Candidate Details" : "Add New Candidate";
   const dispatch = useDispatch();
 
+
   return (
     <Formik
       initialValues={{
+        id: candidate.id || 0,
+        avatar: candidate.avatar || undefined,
         firstName: candidate.firstName || "",
         lastName: candidate.lastName || "",
         email: candidate.email || "",

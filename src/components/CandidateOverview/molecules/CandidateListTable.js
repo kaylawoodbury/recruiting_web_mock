@@ -26,6 +26,7 @@ import SearchIcon from "../../../icons/Search";
 import Scrollbar from "../../molecules/Scrollbar";
 import { deleteCandidate, getAllCandidateDetails } from "../../../store/candidate-store";
 import { useDispatch} from 'react-redux';
+import { Link as RouterLink } from "react-router-dom";
 
 const tabs = [
   {
@@ -375,14 +376,12 @@ const CandidateListTable = (props) => {
                     <TableCell>{candidate.recruitHired}</TableCell>
                     <TableCell align="right">
                       <IconButton
-                      //to add later
-                        // component=
-                        // to=
+                       component={RouterLink}
+                        to={`/candidate/edit/${candidate.id}`}
                       >
                         <PencilAltIcon fontSize="small" />
                       </IconButton>
                       <IconButton
-                      // to add later
                         // component=
                         // to=
                       >

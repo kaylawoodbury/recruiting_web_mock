@@ -13,13 +13,16 @@ import CandidateEditForm from "./molecules/CandidateEditForm";
 import useMounted from "../../hooks/useMounted";
 import useSettings from "../../hooks/useSettings";
 import ChevronRightIcon from "../../icons/ChevronRight";
-import { candidateApi } from '../../services/_mockApi_/candidateDetails';
+import { useSelector, useDispatch } from 'react-redux';
+import { getAllCandidateDetails } from "../../store/candidate-store";
 
 const CandidateEdit = () => {
   const mounted = useMounted();
   const { settings } = useSettings();
+  const candidates = useSelector((state) => state.candidates.data);
   const [candidate, setCandidate] = useState(null);
   const [header, setHeader] = useState("");
+  const dispatch = useDispatch();
   const { id } = useParams();
 
   const getCandidate = useCallback(async () => {
@@ -28,8 +31,8 @@ const CandidateEdit = () => {
         await setCandidate({ id: 0 });
         setHeader("Add New Candidate");
       } else {
-        const data = await candidateApi.getCandidates().find((candidate)=>{ 
-          return candidate.id = id
+        const data = candidates.find((candidate)=>{ 
+          return candidate.id === id
         });
         if (mounted.current) {
           await setCandidate(data);
@@ -77,6 +80,7 @@ const CandidateEdit = () => {
                   component={RouterLink}
                   to="/"
                   variant="subtitle2"
+                  onClick={() => dispatch(getAllCandidateDetails)}
                 >
                   Candidates Overview
                 </Link>

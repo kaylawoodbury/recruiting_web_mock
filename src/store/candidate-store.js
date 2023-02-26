@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { toHaveFormValues } from '@testing-library/jest-dom/dist/matchers';
 import { candidateApi } from '../services/_mockApi_/candidateDetails';
 
 const initialState = {
@@ -14,7 +15,7 @@ const candidatesSlice = createSlice({
       if(state.loaded !== true){
         state.data = action.payload;
         state.loaded = true
-      }
+      } else {state.data=state.data}
     },
     getCandidateDetail(state, action) {
       const candidate = action.payload
@@ -34,13 +35,11 @@ const candidatesSlice = createSlice({
     },
     updateCandidate(state, action) {
       const candidate = action.payload
-
-      state.data = state.data.map((_candidate) => {
-        if (_candidate.id === candidate.id) {
-          return candidate;
+      state.data = state.data.map((value, index) => {
+        if (value.id !== candidate.id) {
+          return value;
         }
-
-        return _candidate;
+        return candidate
       });
     },
     deleteCandidate(state, action) {
@@ -53,7 +52,7 @@ const candidatesSlice = createSlice({
     },
   },
 });
-export const { addCandidate, deleteCandidate, getAllCandidateDetails, updateCandidate } = candidatesSlice.actions;
+export const { addCandidate, deleteCandidate, getAllCandidateDetails, updateCandidate, getCandidateDetail } = candidatesSlice.actions;
 export const { reducer } = candidatesSlice;
 
   export const setAllCandidateDetails = () => async (dispatch) => {
