@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import {useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link as RouterLink } from "react-router-dom";
 import {
@@ -9,33 +9,22 @@ import {
   Grid,
   Typography,
 } from "@material-ui/core";
-import { candidateApi } from '../../services/_mockApi_/candidateDetails';
-import useMounted from "../../hooks/useMounted";
+import { setAllCandidateDetails } from "../../store/candidate-store";
 import ChevronRightIcon from "../../icons/ChevronRight";
 import PlusIcon from "../../icons/Plus";
 import useSettings from "../../hooks/useSettings";
 import CandidateListTable from "./molecules/CandidateListTable";
+import { useDispatch, useSelector } from 'react-redux';
 
 const CandidateList = () => {
-  const mounted = useMounted();
   const { settings } = useSettings();
-  const [candidates, setCandidates] = useState([]);
-
-
-  const getCandidates = useCallback(async () => {
-    try {
-      const data = await candidateApi.getCandidates(); 
-      if (mounted.current) {
-        setCandidates(data);
-      }
-    } catch (err) {
-      console.error(err);
-    }
-  }, [mounted]);
+  const candidates = useSelector((state) => state.candidates.data);
+  const dispatch = useDispatch();
+  debugger
 
   useEffect(() => {
-    getCandidates();
-  }, [getCandidates]);
+    dispatch(setAllCandidateDetails());
+  }, [dispatch]);
 
   return (
     <>
@@ -61,7 +50,7 @@ const CandidateList = () => {
                 sx={{ mt: 1 }}
               >
                 <Typography color="textSecondary" variant="subtitle2">
-                  Overview
+                  Candidates Overview
                 </Typography>
               </Breadcrumbs>
               <Box

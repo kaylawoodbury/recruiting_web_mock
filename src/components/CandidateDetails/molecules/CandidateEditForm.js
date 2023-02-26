@@ -14,6 +14,8 @@ import {
   Divider,
 } from "@material-ui/core";
 import { recruitingStage, language, hired, roll } from "../../../constants";
+import { useDispatch} from 'react-redux';
+import { addCandidate, updateCandidate } from "../../../store/candidate-store";
 
 // with more time would want to find more elegant way to convert/use the enums for the dropdown lists
 const rollOptions = [
@@ -97,6 +99,7 @@ const CandidateEditForm = (props) => {
   let type = candidate.id > 0 ? "edit" : "add";
   let submitButtonText =
     type === "edit" ? "Update Candidate Details" : "Add New Candidate";
+  const dispatch = useDispatch();
 
   return (
     <Formik
@@ -114,7 +117,6 @@ const CandidateEditForm = (props) => {
         recruitHired: candidate.recruitHired || hired.NA,
         roll: candidate.roll || roll.DEVELOPER,
         other: candidate.other || "",
-        submit: null,
       }}
       validationSchema={Yup.object().shape({
         email: Yup.string()
@@ -136,13 +138,14 @@ const CandidateEditForm = (props) => {
       })}
       onSubmit={async (
         values,
-        { resetForm, setErrors, setStatus, setSubmitting }
+        { resetForm, setErrors, }
       ) => {
         if (type === "edit") {
-          //will update this later
-          // push changes to redux
+          dispatch(updateCandidate(values))
         } else {
-         // push changes to redux
+          debugger
+          dispatch(addCandidate(values));
+          resetForm();
         }
       }}
     >
@@ -378,6 +381,7 @@ const CandidateEditForm = (props) => {
                   type="submit"
                   variant="contained"
                   data-cy="sbmt-bttn"
+                  to='/'
                 >
                   {submitButtonText}
                 </Button>
