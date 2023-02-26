@@ -24,6 +24,8 @@ import ArrowRightIcon from "../../../icons/ArrowRight";
 import PencilAltIcon from "../../../icons/PencilAlt";
 import SearchIcon from "../../../icons/Search";
 import Scrollbar from "../../molecules/Scrollbar";
+import { deleteCandidate, getAllCandidateDetails } from "../../../store/candidate-store";
+import { useDispatch} from 'react-redux';
 
 const tabs = [
   {
@@ -128,6 +130,7 @@ const CandidateListTable = (props) => {
   const [limit, setLimit] = useState(5);
   const [query, setQuery] = useState("");
   const [sort, setSort] = useState(sortOptions[0].value);
+  const dispatch = useDispatch();
   const [filters, setFilters] = useState({
     hasAcceptedMarketing: null,
     isProspect: null,
@@ -183,10 +186,17 @@ const CandidateListTable = (props) => {
     setLimit(parseInt(event.target.value, 10));
   };
 
+  const handleDelete = async (selectedCandidates) => {
+    dispatch(deleteCandidate(selectedCandidates));
+    dispatch(getAllCandidateDetails())
+    setSelectedCandidates([]);
+ // to do: add in success message
+  };
+
   const filteredCandidates = applyFilters(candidates, query, filters);
   const sortedCandidates = applySort(filteredCandidates, sort);
   const paginatedCandidates = applyPagination(sortedCandidates, page, limit);
-  // const enableBulkActions = selectedCandidates.length > 0; //may not use this
+  const enableBulkActions = selectedCandidates.length > 0; 
   const selectedSomeCandidates =
     selectedCandidates.length > 0 && selectedCandidates.length < candidates.length;
   const selectedAllCandidates = selectedCandidates.length === candidates.length;
@@ -261,7 +271,7 @@ const CandidateListTable = (props) => {
           </TextField>
         </Box>
       </Box>
-      {/* {enableBulkActions && (
+      {enableBulkActions && (
         <Box sx={{ position: "relative" }}>
           <Box
             sx={{
@@ -279,15 +289,18 @@ const CandidateListTable = (props) => {
               indeterminate={selectedSomeCandidates}
               onChange={handleSelectAllCandidates}
             />
-            <Button color="primary" sx={{ ml: 2 }} variant="outlined">
+            <Button   
+              color="primary"
+              sx={{ ml: 2 }}
+              variant="outlined"
+              onClick={(event) => {
+                handleDelete(selectedCandidates);
+              }}>
               Delete
-            </Button>
-            <Button color="primary" sx={{ ml: 2 }} variant="outlined">
-              Edit // maybe edit could change the hired or recruitment stage? but could remove this for now
             </Button>
           </Box>
         </Box>
-      )} */}
+      )}
       <Scrollbar>
         <Box sx={{ minWidth: 700 }}>
           <Table>

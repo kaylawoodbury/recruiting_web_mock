@@ -13,7 +13,6 @@ const candidatesSlice = createSlice({
     getAllCandidateDetails(state, action) {
       if(state.loaded !== true){
         state.data = action.payload;
-        debugger
         state.loaded = true
       }
     },
@@ -45,20 +44,16 @@ const candidatesSlice = createSlice({
       });
     },
     deleteCandidate(state, action) {
-      const candidateId = action.payload;
-
-      state.data = state.data.filter((candidate) => candidate.id !== candidateId);
+      const candidateIds = action.payload;
+      state.data = state.data.filter((candidate) => candidateIds.indexOf(candidate.id) === -1)
     },
-    // deleteMultipleCandidate(state, action) {
-    //   state.candidates = state.candidates.filter((candidate) => candidate.id !== action.payload);
-    // },
     resetCandidates(state){
       state.data = initialState.data;
       state.loaded = false;
     },
   },
 });
-export const { addCandidate } = candidatesSlice.actions;
+export const { addCandidate, deleteCandidate, getAllCandidateDetails, updateCandidate } = candidatesSlice.actions;
 export const { reducer } = candidatesSlice;
 
   export const setAllCandidateDetails = () => async (dispatch) => {

@@ -20,7 +20,6 @@ const CandidateList = () => {
   const { settings } = useSettings();
   const candidates = useSelector((state) => state.candidates.data);
   const dispatch = useDispatch();
-  debugger
 
   useEffect(() => {
     dispatch(setAllCandidateDetails());

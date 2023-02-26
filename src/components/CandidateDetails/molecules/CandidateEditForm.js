@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-import toast from "react-hot-toast";
 import * as Yup from "yup";
 import { Formik } from "formik";
 import {
@@ -7,9 +6,7 @@ import {
   Button,
   Card,
   Grid,
-  Switch,
   TextField,
-  Typography,
   CardHeader,
   Divider,
 } from "@material-ui/core";
@@ -142,10 +139,11 @@ const CandidateEditForm = (props) => {
       ) => {
         if (type === "edit") {
           dispatch(updateCandidate(values))
+          // todo add in success message and catch error
         } else {
-          debugger
           dispatch(addCandidate(values));
           resetForm();
+          // todo add in success message and catch error
         }
       }}
     >
@@ -155,8 +153,6 @@ const CandidateEditForm = (props) => {
         handleChange,
         handleSubmit,
         isSubmitting,
-        setFieldValue,
-        setFieldTouched,
         touched,
         values,
       }) => (
