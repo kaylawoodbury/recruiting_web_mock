@@ -40,8 +40,7 @@ The folder material_ui holds the template and is not directly used in the soluti
 [mock_web.mov.zip](https://github.com/kaylawoodbury/recruiting_web_mock/files/10834893/mock_web.mov.zip)
 
 ### To Run Web App Locally
-
-`yarn start`
+To run the app locally, clone the repo to your computer. Run `yarn` and then `yarn start`. 
 
 Runs the app in the development mode.\
 Open to view it in the browser.
